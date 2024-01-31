@@ -1,5 +1,5 @@
 
-# Assignment 1: System's Integration
+# Assignment 1: System's Integration SYS 5160 - Utkarsh Nipane
 
 ## Welcome to the GitHub Repository of Ronit Shahu!
 
@@ -78,6 +78,6 @@ Your contributions are what make the community such an amazing place to learn, i
 
 ---
 
-We hope this guide helps you get started with "Assignment 1: System's Integration". Happy coding!
+We hope this guide helps you get started with "Assignment 1: System's Integration". Hope you enjoyed the code. Happy coding!
 
 ---
