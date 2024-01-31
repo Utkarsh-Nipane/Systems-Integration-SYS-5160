@@ -69,7 +69,7 @@ pip install -r Requirements.txt
 With your virtual environment set up and dependencies installed, you're ready to run the application:
 
 ```bash
-python app.py
+python mainpso.py
 ```
 
 ---
