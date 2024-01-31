@@ -1,9 +1,18 @@
 """
-This module is used for solving the last Question of Assisgenment 1 of System's Integration.
-We First import all the necessary imports.
-The first section is used for ploting the bode plot and the responses of the system.
-The second section is for PSO.
+System Integration Assignment 1 - Last Question Solver
+
+This module provides solutions for the final question of Assignment 1 in System's Integration.
+
+The code performs the following tasks:
+1. Imports necessary libraries for numerical computation and optimization.
+2. Defines a Transfer Function representing a system.
+3. Implements a dynamic system model using ordinary differential equations.
+4. Defines an objective function for Particle Swarm Optimization (PSO) based parameter identification.
+5. Plots various system responses, including impulse and step responses, and a Pole-Zero Plot.
+6. Performs PSO optimization to identify system parameters.
+
 """
+
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.signal import TransferFunction, impulse, step, freqresp
@@ -18,7 +27,7 @@ system = TransferFunction(numerator, denominator)
 
 def model(y, t, params):
     """
-    This is the model function
+    Dynamic system model for ordinary differential equations.
     """
     a3, a2, a1, b3, b2, b1 = params
     dydt = [y[1], y[2], -(a1*y[2] + a2*y[1] + a3*y[0]) +
@@ -28,19 +37,18 @@ def model(y, t, params):
 
 def objective(params, t, actual_response):
     """
-    This function returns the objective value
+    Objective function for PSO-based parameter identification.
     """
     initial_conditions = [0, 0, 0]  # Initial conditions for y, y', and y''
     predicted_response = odeint(model, initial_conditions, t, args=(params,))
     difference = actual_response - predicted_response[:, 0]
     obj_value = np.sum(difference**2)
     return obj_value
-# Plot Impulse and Step Responses, and Pole-Zero Plot
 
 
 def plot_system_responses(system):
     """
-    This function is used to plot all the relevant responses
+    Plot various responses of the system, including impulse, step, and Pole-Zero Plot.
     """
     # Impulse Response
     time_imp, response_imp = impulse(system)
@@ -74,12 +82,9 @@ def plot_system_responses(system):
     plt.show()
 
 
-plot_system_responses(system)
-
-
 def plot_bode_plot(system):
     """
-    This function is used to plot the Bode plot
+    Plot Bode plot - Magnitude and Phase.
     """
     freq, response = freqresp(system)
     plt.figure()
@@ -95,6 +100,10 @@ def plot_bode_plot(system):
     plt.show()
 
 
+# Plot various system responses
+plot_system_responses(system)
+
+# Plot Bode plot
 plot_bode_plot(system)
 
 # System Identification using PSO
